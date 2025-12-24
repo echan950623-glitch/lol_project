@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英雄聯盟總決賽宣傳</title>
+    <link rel="icon" href="./main_images/WCS_logo.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">首頁</a></li>
+
+            <li class="dropdown"><a href="#NONE">比賽連結</a>
+                <div class="dropdown-content">
+                    <a href="https://www.youtube.com/@lolesportstw" target="_blank">中文YT</a>
+                    <a href="https://www.twitch.tv/lolesportstw" target="_blank">中文Twitch</a>
+                    <a href="https://www.youtube.com/@lolesports" target="_blank">英文YT</a>
+                    <a href="https://www.twitch.tv/riotgames" target="_blank">英文Twitch</a>
+                </div>
+            </li>
+
+            <li class="dropdown"><a href="#NONE">歷史賽事</a>
+                <div class="dropdown-content">
+                    <a href="https://lolesports.com/zh-TW/news/worlds-2024-primer" target="_blank">2024世界賽</a>
+                    <a href="https://lolesports.com/zh-TW/news/worlds-2023-primer" target="_blank">2023世界賽</a>
+                </div>
+            </li>
+            
+            <li><a href="#NONE" target = "_blank">戰隊資訊</a></li>
+
+            <li><a href="#NONE" target = "_blank">立即訂票</a></li>
+        </ul>
+
+        <img id="speaker-icon" class="music-btn" src="./main_images/audio-off.png" 
+             alt="bgm" width="32" height="32">
+    </nav>
+
+    <p class = "hint">scroll down</p>
+    <div class="video-container">
+        <video id="bg-video" muted autoplay loop playsinline>
+            <source src="./video/lol_video.mp4" type="video/mp4">
+            你的瀏覽器不支援 HTML5 影片。
+        </video>
+    </div>
+
+
+    <div class="trophy-container" id="trophy-box">
+        <img src="./main_images/trophy.png" alt="Summoner's Cup">
+        <h1 id="trophy-text">2025 WORLD CHAMPIONSHIP</h1>
+    </div>
+
+    <div class="cinema-text-container">
+        <p class="cine-text" id="cine-text-1">一座獎盃，一個傳奇。<br>巔峰對決，就此登場。</p>
+        <p class="cine-text" id="cine-text-2">為了傳奇，<br>他們願意犧牲一切。</p>
+        <p class="cine-text" id="cine-text-3">舊王朝重燃，<br>新的篇章將被書寫。</p>
+        <p class="cine-text" id="cine-text-4">11 月 9 日，成都是見證傳奇的舞台。<br>你，準備好了嗎？</p>
+    </div>
+
+    <div class="scroll-spacer"></div>
+
+
+    <div class="main-content">
+        <a id="home"></a>
+        <img src="./main_images/bg.jpg" width="auto" height="95%" alt="bg">
+
+        <div class="promo">
+            <h2>Earn Your Legacy</h2>
+            <p class="subline">賺取你的傳奇 — 世界冠軍之戰</p>
+
+            <p class="description">
+                2025 年世界大賽總決賽將於 11 月 9 日在中國成都「東安湖體育公園多功能體育館」舉行。
+            </p>
+            
+            <p class="description">
+                經歷無數場的拚搏、策略對抗與極限操作，
+                成立王朝的機會只會留給真正能承受壓力、挺過犧牲的人。
+            </p>    
+            
+            <p class="description">
+                本屆 Worlds 以 “Earn Your Legacy” 為口號，
+                象徵著每一位選手必須用行動證明自己，
+                用勝利刻下屬於自己的傳奇。
+            </p>
+
+            <div class="highlights">
+                <h3>你不能錯過的理由</h3>
+                <ul>
+                    <li>史詩級決賽舞台：金光主視覺、全新冠軍獎盃特效、沉浸式開場秀</li>
+                    <li>世界頂級隊伍交鋒：戰術、操作與意志力的最終對決</li>
+                    <li>首次結合未來光影科技的 Worlds 舞台，視覺直接拉滿</li>
+                </ul>
+            </div>
+
+            
+        </div>
+
+
+
+        <p class="cta">主題曲「Sacrifice」 – 演唱：G.E.M. 鄧紫棋</p>
+
+        <a class="ticket-btn" href="#NONE"
+        target="_blank">立即訂票</a>
+
+
+    </div>
+
+ 
+
+    <audio id="bgm" src="./music/bgm.mp3" loop></audio>
+
+    <script src = "script.js"></script>
+</body>
+</html>

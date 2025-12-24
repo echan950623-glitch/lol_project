@@ -1,0 +1,375 @@
+:root {
+    --main-bg: #050505;           /* 極深黑背景 */
+    --nav-bg: rgba(0, 0, 0, 0.9); /* 導覽列半透明黑 */
+    --accent-red: #e60012;        /* 戰隊紅 (強調色) */
+    --dark-red: #8a000b;          /* 深紅色 (陰影/邊框) */
+    --text-white: #ffffff;
+    --text-gold: #c8aa6e;         /* 冠軍金 (保留給獎盃相關) */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg);
+    overflow-x: hidden;
+    color: var(--text-white);
+    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    letter-spacing: 0.5px;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, 
+.cine-text,
+.trophy-container h1, 
+.vs-badge,
+.team-logo,
+.ticket-btn,
+nav ul li a {
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+    text-transform: uppercase;
+}
+
+.promo h2, 
+.highlights h3 {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 900; 
+}
+
+/*反白*/
+::selection {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+/*cursor*/
+html { 
+    cursor: url("./main_images/cursor-black.png"), auto; 
+}
+
+a:hover, 
+button:hover, 
+.dropdown:hover, 
+.music-btn:hover { 
+    cursor: url("./main_images/cursor-blue.png"), pointer !important; 
+}
+
+html:active, 
+a:active, 
+button:active, 
+input:active { 
+    cursor: url("./main_images/cursor-red.png"), pointer !important; 
+}
+
+/* 導覽列 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    border-bottom: 2px solid var(--accent-red); 
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 0 0 15px rgba(230, 0, 18, 0.3); 
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+nav.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ddd; 
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+nav ul li a:hover {
+    color: white;
+    background-color: var(--accent-red);
+    text-shadow: 0 0 5px white;
+    box-shadow: 0 0 10px var(--accent-red);
+    transform: skewX(-10deg);
+}
+
+/*下拉選單*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #000;
+    border: 1px solid var(--dark-red);
+    padding: 0;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    color: #bbb;
+    font-size: 16px;
+    border-bottom: 1px solid #222;
+    transition: all 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #1a1a1a;
+    color: var(--accent-red);
+    border-left: 5px solid var(--accent-red);
+    padding-left: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*音樂按鈕*/
+.music-btn {
+    cursor: pointer;
+    margin-left: 20px;
+    transition: filter 0.3s;
+}
+
+.music-btn:hover {
+    filter: drop-shadow(0 0 5px var(--accent-red));
+}
+
+/*video*/
+.hint{
+    position: fixed;
+    top: 90%;
+    left: 90%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+    opacity: 0.4;
+    z-index: 25;
+    pointer-events: none;
+}
+
+.hint.hide {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.video-container {
+    position: fixed;
+    width: 90%;
+    height: 90vh; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 20px; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8); 
+    pointer-events: none; 
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) contrast(1.2);
+    transition: all 0.1s ease-out;
+}
+
+/*獎盃*/
+.trophy-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8) translateY(300px);
+    transition: all 0.1s ease-out;
+}
+
+.trophy-container img {
+    width: 600px;
+    max-width: 80vw;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(200, 170, 110, 0.4));
+}
+
+.trophy-container h1 {
+    color: var(--text-gold);
+    margin-top: 20px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    opacity: 0;
+    text-shadow: 0 0 20px rgba(0,0,0,0.9), 0 0 5px rgba(200, 170, 110, 0.8);
+    transition: opacity 0.5s ease-out;
+}
+
+.cinema-text-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 5;
+    text-align: center;
+    pointer-events: none;
+}
+
+.cine-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px black;
+    letter-spacing: 5px;
+    line-height: 1.5;
+    opacity: 0;
+    transition: transform 0.1s linear;
+}
+
+.scroll-spacer {
+    height: 500vh; 
+    pointer-events: none;
+}
+
+/*main*/
+.main-content {
+    position: relative;
+    z-index: 20;
+    background: linear-gradient(to bottom, #000000 0%, #150000 50%, #2a0005 100%);
+    color: white;
+    padding: 100px 50px 50px 50px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.main-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px var(--dark-red);
+    letter-spacing: 3px;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.main-content .cta {
+    font-size: 1rem;
+    color: var(--text-gold);
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(200,170,110,0.6);
+}
+
+.promo .subline {
+    font-size: 1.8rem;
+    color: var(--accent-red);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--dark-red);
+}
+
+.promo .description {   
+    font-size: 1.2rem;
+    color: #ddd;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.highlights {
+    padding: 40px;
+    margin: 50px auto;
+    text-align: center; 
+    max-width: 700px;
+}
+
+.highlights h3 {
+    color: var(--text-gold);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(200,170,110,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 15px;
+}
+
+.highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlights li {
+    margin: 15px 0;
+    padding-left: 0;    
+    position: relative;
+    font-size: 1.1rem;
+    color: #eee;
+    line-height: 1.5;
+}
+
+.highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: var(--accent-red);
+    font-size: 1.2rem;
+}
+
+/*訂票按鈕*/
+.ticket-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--accent-red);
+    color: white;   
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--accent-red);
+    transition: all 0.3s ease;
+}
+
+.ticket-btn:hover {
+    background-color: #ff1a1a;
+    box-shadow: 0 0 25px #ff1a1a;
+    transform: translateY(-5px);
+}
